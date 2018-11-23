@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/i">
+        <file>i/ace-of-spades-icon.png</file>
+        <file>i/ace-of-hearts-icon.png</file>
+        <file>i/cpu-ARM-icon.png</file>
+        <file>i/cpu-icon.png</file>
+        <file>i/cpu-intel-icon.png</file>
+        <file>i/cpu-TexasInstruments-icon.png</file>
+        <file>i/add-icon.png</file>
+        <file>i/delete-icon.png</file>
+        <file>i/Pencil-icon.png</file>
+    </qresource>
+</RCC>
