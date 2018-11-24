@@ -52,12 +52,21 @@ QList<Annotation>::const_iterator Chip::getEndAnnotations() const
     return annotations.constEnd();
 }
 
+void Chip::clearModel()
+{
+    beginResetModel();
+    annotations.clear();
+    endResetModel();
+    emit onAnnotationModelChanged();
+}
+
 
 void Chip::addSome()
 {
     beginInsertRows( QModelIndex(), 0, 0 );
     annotations.push_back(Annotation(QUuid::createUuid().toString().mid(1, 4), 1, 2));
     endInsertRows();
+    emit onAnnotationModelChanged();
 }
 
 void Chip::removeAt(int index)
@@ -65,11 +74,13 @@ void Chip::removeAt(int index)
     beginRemoveRows(QModelIndex(), 0, 0);
     annotations.removeAt(index);
     endRemoveRows();
+    emit onAnnotationModelChanged();
 }
 
 void Chip::updateAt(const QModelIndex& index)
 {
     annotations[index.row()].l ="@new";
     emit dataChanged(index, index);
+    emit onAnnotationModelChanged();
 }
 

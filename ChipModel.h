@@ -18,23 +18,26 @@ Annotation(QString _l, int _x, int _y) :
 };
 
 class Chip : public QAbstractListModel
-{	Q_OBJECT
+{
+    Q_OBJECT
+    public:
+        explicit Chip(QObject* parent = nullptr);
+        int rowCount(const QModelIndex &parent = QModelIndex()) const;
+        QVariant data(const QModelIndex &index, int role) const;
+        int getAnnotationsListSize();
+        bool isAnnotationsListEmpty();
+        QList<Annotation>::const_iterator getBeginAnnotations() const;
+        QList<Annotation>::const_iterator getEndAnnotations() const;
 
-public:
-    explicit Chip(QObject* parent = nullptr);
-    int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    QVariant data(const QModelIndex &index, int role) const;
-    int getAnnotationsListSize();
-    bool isAnnotationsListEmpty();
-    QList<Annotation>::const_iterator getBeginAnnotations() const;
-    QList<Annotation>::const_iterator getEndAnnotations() const;
+        void clearModel();
+        void addSome();
+        void removeAt(int index);
+        void updateAt(const QModelIndex& index);
+    signals:
+        void onAnnotationModelChanged();
+    private:
+        QList<Annotation> annotations;
 
-    void addSome();
-    void removeAt(int index);
-    void updateAt(const QModelIndex& index);
-
-private:
-    QList<Annotation> annotations;
 };
 
 #endif // SLAMANNOTATION_H

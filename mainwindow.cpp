@@ -72,3 +72,8 @@ void MainWindow::on_pushButton_2_clicked()
 {
     model->addSome();
 }
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    model->clearModel();
+}
