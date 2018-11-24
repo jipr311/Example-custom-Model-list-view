@@ -9,5 +9,10 @@
         <file>i/add-icon.png</file>
         <file>i/delete-icon.png</file>
         <file>i/Pencil-icon.png</file>
+        <file>i/free-map-marker-icon-blue.png</file>
+        <file>i/point.png</file>
+        <file>i/point-dirty.png</file>
+        <file>i/map-icon.png</file>
+        <file>i/map-icon-gray.png</file>
     </qresource>
 </RCC>

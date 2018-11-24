@@ -19,8 +19,16 @@ Annotation(QString _l, int _x, int _y) :
 
 class Chip : public QAbstractListModel
 {
+
     Q_OBJECT
+    Q_ENUMS(Status)
     public:
+        enum class Status : int
+        {
+            OK,
+            NOT_OK,
+            UNKNOWN
+        };
         explicit Chip(QObject* parent = nullptr);
         int rowCount(const QModelIndex &parent = QModelIndex()) const;
         QVariant data(const QModelIndex &index, int role) const;

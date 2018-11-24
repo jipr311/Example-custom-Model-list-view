@@ -77,3 +77,9 @@ void MainWindow::on_pushButton_3_clicked()
 {
     model->clearModel();
 }
+
+void MainWindow::on_pushButton_4_clicked()
+{
+     qDebug() << "c: ";
+     setCursor(QPixmap(":/i/i/point-dirty.png").scaledToWidth(32));
+}
