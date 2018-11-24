@@ -3,9 +3,10 @@
 #include<QtDebug>
 #include <QPoint>
 #include <QMenu>
+#include <QMetaObject>
+#include <QMetaEnum>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -15,6 +16,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->listView->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->listView, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showContextMenu(QPoint)));
 
+    QMetaObject meta = Holder::staticMetaObject;
+    QMetaEnum tmpObj = meta.enumerator(0);
+    for (int i = 0; i < tmpObj.keyCount(); i++)
+    {
+        qDebug() << tmpObj.key(i);
+        ui->comboBox->addItem(tmpObj.key(i));
+    }
+    Holder::addItem(ui->comboBox);
 }
 
 MainWindow::~MainWindow()

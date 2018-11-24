@@ -2,6 +2,7 @@
 #define SLAMANNOTATION_H
 
 #include <QAbstractListModel>
+#include <QComboBox>
 
 struct Annotation
 {
@@ -17,9 +18,8 @@ Annotation(QString _l, int _x, int _y) :
     }
 };
 
-class Chip : public QAbstractListModel
+class Holder : public QObject
 {
-
     Q_OBJECT
     Q_ENUMS(Status)
     public:
@@ -29,6 +29,19 @@ class Chip : public QAbstractListModel
             NOT_OK,
             UNKNOWN
         };
+        static void addItem(QComboBox* combo)
+        {
+            combo->addItem("OK");
+            combo->addItem("NOT_OK");
+            combo->addItem("UNKNOWN");
+        }
+};
+
+class Chip : public QAbstractListModel
+{
+
+    Q_OBJECT
+    public:
         explicit Chip(QObject* parent = nullptr);
         int rowCount(const QModelIndex &parent = QModelIndex()) const;
         QVariant data(const QModelIndex &index, int role) const;

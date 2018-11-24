@@ -8,12 +8,7 @@
 
 Chip::Chip(QObject* parent) : QAbstractListModel(parent)
 {
-    QMetaObject meta = Chip::staticMetaObject;
-    QMetaEnum tmpObj = meta.enumerator(0);
-    for (int i = 0; i < tmpObj.keyCount(); i++)
-    {
-        qDebug() << tmpObj.key(i);
-    }
+
 }
 
 int Chip::rowCount(const QModelIndex &parent) const
