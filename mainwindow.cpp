@@ -33,17 +33,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::showContextMenu(const QPoint& pos)
 {
-    // Handle global position
-       QPoint globalPos = ui->listView->mapToGlobal(pos);
+// Handle global position
+QPoint globalPos = ui->listView->mapToGlobal(pos);
 
-       // Create menu and insert some actions
-       QMenu myMenu;
-       myMenu.addAction(QIcon(":/i/i/add-icon.png"), "Insert", this, SLOT(addItem()));
-       myMenu.addAction(QIcon(":/i/i/delete-icon.png"), "Erase",  this, SLOT(eraseItem()));
-       myMenu.addAction(QIcon(":/i/i/Pencil-icon.png"), "Update", this, SLOT(updateItem()));
+// Create menu and insert some actions
+QMenu myMenu;
+myMenu.addAction(QIcon(":/resources/resources/images/add.png"), "Add", this, SLOT(addItem()));
+myMenu.addAction(QIcon(":/resources/resources/images/remove.png"), "Remove",  this, SLOT(eraseItem()));
+myMenu.addAction(QIcon(":/resources/resources/images/annotation.png"), "Update", this, SLOT(updateItem()));
 
-       // Show context menu at handling position
-       myMenu.exec(globalPos);
+// Show context menu at handling position
+myMenu.exec(globalPos);
 }
 
 void MainWindow::addItem()
